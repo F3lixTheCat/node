@@ -152,7 +152,9 @@ Error: Cannot load native addon because loading addons is disabled.
 <!-- YAML
 added: v20.0.0
 changes:
-  - version: v24.4.0
+  - version:
+      - v24.4.0
+      - v22.18.0
     pr-url: https://github.com/nodejs/node/pull/58853
     description: When spawning process with the permission model enabled.
                  The flags are inherit to the child Node.js process through
@@ -1074,7 +1076,7 @@ Previously gated the entire `import.meta.resolve` feature.
 
 <!-- YAML
 added:
-  - REPLACEME
+  - v24.5.0
 -->
 
 > Stability: 1.1 - Active Development
@@ -1529,7 +1531,9 @@ forked processes, or clustered processes.
 <!-- YAML
 added: v12.0.0
 changes:
-  - version: v23.6.0
+  - version:
+      - v23.6.0
+      - v22.18.0
     pr-url: https://github.com/nodejs/node/pull/56350
     description: Add support for `-typescript` values.
   - version:
@@ -1859,7 +1863,9 @@ Disable the experimental [`node:sqlite`][] module.
 <!-- YAML
 added: v22.6.0
 changes:
-  - version: v23.6.0
+  - version:
+      - v23.6.0
+      - v22.18.0
     pr-url: https://github.com/nodejs/node/pull/56350
     description: Type stripping is enabled by default.
 -->
@@ -2641,6 +2647,20 @@ changes:
 The destination for the corresponding test reporter. See the documentation on
 [test reporters][] for more details.
 
+### `--test-rerun-failures`
+
+<!-- YAML
+added:
+  - REPLACEME
+-->
+
+A path to a file allowing the test runner to persist the state of the test
+suite between runs. The test runner will use this file to determine which tests
+have already succeeded or failed, allowing for re-running of failed tests
+without having to re-run the entire test suite. The test runner will create this
+file if it does not exist.
+See the documentation on [test reruns][] for more details.
+
 ### `--test-shard`
 
 <!-- YAML
@@ -3018,7 +3038,7 @@ See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 ### `--use-env-proxy`
 
 <!-- YAML
-added: REPLACEME
+added: v24.5.0
 -->
 
 > Stability: 1.1 - Active Development
@@ -3182,6 +3202,7 @@ node --watch index.js
 <!-- YAML
 added:
   - v24.4.0
+  - v22.18.0
 -->
 
 > Stability: 1.1 - Active Development
@@ -3501,6 +3522,7 @@ one is included in the list below.
 * `--test-only`
 * `--test-reporter-destination`
 * `--test-reporter`
+* `--test-rerun-failures`
 * `--test-shard`
 * `--test-skip-pattern`
 * `--throw-deprecation`
@@ -3688,6 +3710,18 @@ specified proxy.
 
 This can also be enabled using the [`--use-env-proxy`][] command-line flag.
 When both are set, `--use-env-proxy` takes precedence.
+
+### `NODE_USE_SYSTEM_CA=1`
+
+<!-- YAML
+added: v24.6.0
+-->
+
+Node.js uses the trusted CA certificates present in the system store along with
+the `--use-bundled-ca` option and the `NODE_EXTRA_CA_CERTS` environment variable.
+
+This can also be enabled using the [`--use-system-ca`][] command-line flag.
+When both are set, `--use-system-ca` takes precedence.
 
 ### `NODE_V8_COVERAGE=dir`
 
@@ -4018,6 +4052,7 @@ node --stack-trace-limit=12 -p -e "Error.stackTraceLimit" # prints 12
 [`--redirect-warnings`]: #--redirect-warningsfile
 [`--require`]: #-r---require-module
 [`--use-env-proxy`]: #--use-env-proxy
+[`--use-system-ca`]: #--use-system-ca
 [`AsyncLocalStorage`]: async_context.md#class-asynclocalstorage
 [`Buffer`]: buffer.md#class-buffer
 [`CRYPTO_secure_malloc_init`]: https://www.openssl.org/docs/man3.0/man3/CRYPTO_secure_malloc_init.html
@@ -4062,6 +4097,7 @@ node --stack-trace-limit=12 -p -e "Error.stackTraceLimit" # prints 12
 [snapshot testing]: test.md#snapshot-testing
 [syntax detection]: packages.md#syntax-detection
 [test reporters]: test.md#test-reporters
+[test reruns]: test.md#rerunning-failed-tests
 [test runner execution model]: test.md#test-runner-execution-model
 [timezone IDs]: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 [tracking issue for user-land snapshots]: https://github.com/nodejs/node/issues/44014

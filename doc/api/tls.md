@@ -2263,7 +2263,7 @@ The server can be tested by connecting to it using the example client from
 ## `tls.setDefaultCACertificates(certs)`
 
 <!-- YAML
-added: REPLACEME
+added: v24.5.0
 -->
 
 * `certs` {string\[]|ArrayBufferView\[]} An array of CA certificates in PEM format.
@@ -2427,9 +2427,7 @@ added: v11.4.0
 ## `tls.DEFAULT_CIPHERS`
 
 <!-- YAML
-added:
- - v19.8.0
- - v18.16.0
+added: v0.11.3
 -->
 
 * Type: {string} The default value of the `ciphers` option of
